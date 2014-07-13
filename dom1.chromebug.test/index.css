@@ -1,0 +1,25 @@
+span {
+    display: inline-block;
+    height: 68px;
+    width: 68px;
+}
+
+span.circle-css {
+    background-image: url('circle-css.svg');
+}
+
+span.circle-css-cross-domain {
+    background-image: url('circle-css-cross-domain.svg');
+}
+
+span.circle-emb-circle-css {
+    background-image: url('circle-emb-circle-css.svg');
+}
+
+embed {
+    display: inline-block;
+}
+
+iframe {
+    border-width: 0px;
+}

@@ -1,0 +1,35 @@
+SVG Security Test Suite 
+=======================
+
+This project contains a battery of test cases designed to test how browsers 
+handle CSS, JavaScript, and external objects loaded from SVG documents.
+
+svg.test
+--------
+
+This set of tests loads simple SVGs that load internal CSS and JavaScript, 
+same-origin external CSS and JavaScript, different-origin external CSS and 
+JavaScript, and other SVG documents.  Each case is loaded eight different ways 
+under a variety of different CSP and XFO settings. 
+
+To run the tests, serve the directory `svg.test` from an Apache web server 
+using the configuration given in `svg.test.conf`. Point the following host 
+names at the web server:
+
+*   base.svg.test
+*   base_a.svg.test
+*   nocsp.svg.test
+*   xfo1.svg.test
+*   xfo1_a.svg.test
+*   xfo2.svg.test
+*   xfo2_a.svg.test
+*   csp1.svg.test
+*   csp1_a.svg.test
+*   csp2.svg.test
+*   csp2_a.svg.test
+*   csp3.svg.test
+*   csp3_a.svg.test
+*   csp4.svg.test
+*   csp4_a.svg.test
+*   csp5.svg.test
+*   csp5_a.svg.test

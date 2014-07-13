@@ -1,0 +1,44 @@
+embed, object {
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.column {
+    display: inline-block;
+    width: 600px;
+}
+
+iframe {
+    border: 1px solid black;
+}
+
+span.image {
+    display: inline-block;
+    height: 68px;
+    width: 68px;
+    border: 1px solid black;
+}
+
+span.circle-css {
+    background-image: url('circle-css.svg');
+}
+
+span.circle-css-cross-domain {
+    background-image: url('circle-css-cross-domain.svg');
+}
+
+span.circle-emb-circle {
+    background-image: url('circle-emb-circle.svg');
+}
+
+span.circle-emb-xd-circle {
+    background-image: url('circle-emb-xd-circle.svg');
+}
+
+span.circle-emb-html-xd-circle-css {
+    background-image: url('circle-emb-html-xd-circle-css.svg');
+}
+
+span.circle-emb-html-xd-circle-css-external {
+    background-image: url('circle-emb-html-xd-circle-css-external.svg');
+}
