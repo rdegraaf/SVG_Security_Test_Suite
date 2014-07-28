@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="index.css.php"/>
+  </head>
+  <body>
+    <h2>Recursive SVG through svg:image</h2>
+    <img src="http://recurse.svg.test/recursive-image.svg?0" alt="circle" width="68" height="68"/>
+    <object data="http://recurse.svg.test/recursive-image.svg?0" type="image/svg+xml" width="68" height="68"></object>
+    <img src="http://recurse.svg.test:8000/0" alt="circle" width="68" height="68"/>
+    <object data="http://recurse.svg.test:8000/0" type="image/svg+xml" width="68" height="68"></object>
+
+    <h2>Recursive SVG through svg:foreignObject</h2>
+    <img src="http://recurse.svg.test/recursive-foreignobject.svg?0" alt="circle" width="68" height="68"/>
+    <object data="http://recurse.svg.test/recursive-foreignobject.svg?0" type="image/svg+xml" width="68" height="68"></object>
+    <img src="http://recurse.svg.test:8001/0" alt="circle" width="68" height="68"/>
+    <object data="http://recurse.svg.test:8001/0" type="image/svg+xml" width="68" height="68"></object>
+  </body>
+</html>
+
