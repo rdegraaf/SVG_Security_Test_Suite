@@ -1,12 +1,7 @@
 <?php
 header("Content-type: image/svg+xml");
 
-function altHostName($hostName)
-{
-    $prefix = substr($hostName, 0, strlen($hostName) - 9);
-    $suffix = substr($hostName, -9);
-    return $prefix . "_a" . $suffix;
-}
+include "funcs.php";
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
 ?>
@@ -23,6 +18,6 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
      r="24"
      fill="#c8c8c8"/>
   <?php
-    echo "<image x=\"0\" y=\"0\" width=\"34\" height=\"34\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-css-so.svg", "\" />";
+    echo "<image x=\"0\" y=\"0\" width=\"34\" height=\"34\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-js-do.svg.php", "\" />";
   ?>
 </svg>

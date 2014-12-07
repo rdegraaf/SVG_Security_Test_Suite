@@ -19,7 +19,7 @@
       </xhtml:head>
       <xhtml:body>
         <xhtml:p>
-          <xhtml:object data="recurse-html-object-10_2.svg" type="image/svg+xml" width="34" height="34">circle</xhtml:object>
+          <xhtml:object data="recurse-html-object-10_2.svg" type="image/svg+xml" width="34" height="34"></xhtml:object>
         </xhtml:p>
       </xhtml:body>
     </xhtml:html>

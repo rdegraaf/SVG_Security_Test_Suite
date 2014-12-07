@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?php
+header("Content-type: image/svg+xml");
+
+include "funcs.php";
+
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
+?>
 <svg
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -19,7 +25,9 @@
       </xhtml:head>
       <xhtml:body>
         <xhtml:p>
-          <xhtml:object data="circle-js-so.svg" type="image/svg+xml" width="34" height="34">circle</xhtml:object>
+          <?php
+            echo "<xhtml:object width=\"34\" height=\"34\" type=\"image/svg+xml\" data=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-css-so.svg", "\" ></xhtml:object>";
+          ?>
         </xhtml:p>
       </xhtml:body>
     </xhtml:html>

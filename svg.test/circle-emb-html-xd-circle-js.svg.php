@@ -1,12 +1,7 @@
 <?php
 header("Content-type: image/svg+xml");
 
-function altHostName($hostName)
-{
-    $prefix = substr($hostName, 0, strlen($hostName) - 9);
-    $suffix = substr($hostName, -9);
-    return $prefix . "_a" . $suffix;
-}
+include "funcs.php";
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
 ?>
@@ -31,7 +26,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
       <xhtml:body>
         <xhtml:p>
           <?php
-            echo "<xhtml:object width=\"34\" height=\"34\" type=\"image/svg+xml\" data=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-js.svg", "\" >circle</xhtml:object>";
+            echo "<xhtml:object width=\"34\" height=\"34\" type=\"image/svg+xml\" data=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-js.svg", "\" ></xhtml:object>";
           ?>
         </xhtml:p>
       </xhtml:body>

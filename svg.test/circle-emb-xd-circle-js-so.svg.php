@@ -1,12 +1,7 @@
 <?php
 header("Content-type: image/svg+xml");
 
-function altHostName($hostName)
-{
-    $prefix = substr($hostName, 0, strlen($hostName) - 9);
-    $suffix = substr($hostName, -9);
-    return $prefix . "_a" . $suffix;
-}
+include "funcs.php";
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
 ?>

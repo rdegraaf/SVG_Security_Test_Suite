@@ -18,6 +18,6 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
      r="24"
      fill="#c8c8c8"/>
   <?php
-    echo "<image x=\"0\" y=\"0\" width=\"34\" height=\"34\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-css-js-external.svg", "\" />";
+    echo "<image x=\"0\" y=\"0\" width=\"34\" height=\"34\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle-css-so.svg", "\" />";
   ?>
 </svg>
