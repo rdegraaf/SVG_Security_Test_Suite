@@ -1,14 +1,11 @@
 <?php 
 function getFile($url)
 {
-    if (0 === strpos($url, "http://"))
-    {
+    if (0 === strpos($url, "http://")) {
         // We only get an HTTP URL for different-origin objects, which it doesn't make sense to 
         // in-line.  So return a dummy object.
         return "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"68\" height=\"68\" version=\"1.1\"></svg>";
-    }
-    else
-    {
+    } else {
         // Force an HTTP retrieval to execute any PHP in the object.
         return file_get_contents("http://" . $_SERVER['SERVER_NAME'] . "/" . $url);
     }
@@ -48,12 +45,32 @@ function altHostName($hostName)
     $suffix = substr($hostName, $pos);
 
     $pos = strpos($prefix, "_");
-    if (false !== $pos)
-    {
+    if (false !== $pos) {
         $prefix = substr($prefix, 0, $pos);
         return $prefix . "_b" . $suffix;
     }
 
     return $prefix . "_a" . $suffix;
+}
+
+function printPolicies()
+{
+    $policies = [
+        "base.svg.test"  => [NULL, NULL],
+        "nocsp.svg.test" => [NULL, NULL],
+        "xfo1.svg.test"  => [NULL, "DENY"],
+        "xfo2.svg.test"  => [NULL, "SAMEORIGIN"],
+        "csp1.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'", NULL],
+        "csp2.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; object-src 'self'", NULL],
+        "csp3.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; frame-src 'self'", NULL],
+        "csp4.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'self'; frame-src 'self'", NULL],
+        "csp5.svg.test"  => ["default-src 'none'; script-src 'self' http://*.svg.test; style-src 'self' http://*.svg.test; img-src 'self' data: http://*.svg.test; object-src 'self' http://*.svg.test; frame-src 'self' http://*.svg.test;", NULL]
+    ];
+
+    echo "<h2>Policy:</h2>";
+    echo "<ul>";
+    echo "<li>CSP: ", $policies[$_SERVER['SERVER_NAME']][0], "</li>";
+    echo "<li>XFO: ", $policies[$_SERVER['SERVER_NAME']][1], "</li>";
+    echo "</ul>";
 }
 ?>

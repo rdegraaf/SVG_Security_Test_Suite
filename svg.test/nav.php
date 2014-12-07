@@ -12,7 +12,7 @@
     <table id="nav">
       <thead>
         <tr>
-          <th><a href="http://base.svg.test">Index</a></th>
+          <th><a href="http://svg.test">Index</a></th>
           <td>Base</td>
           <td>XFO1</td>
           <td>XFO2</td>

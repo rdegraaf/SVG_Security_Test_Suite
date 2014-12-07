@@ -1,7 +1,6 @@
 <?php
-header("Content-type: text/html");
-
-include "funcs.php";
+  include "funcs.php";
+  header("Content-type: text/html");
 ?>
 <!DOCTYPE html>
 <html>
