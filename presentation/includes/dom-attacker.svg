@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   width="68"
+   height="68"
+   viewBox="-34 -34 68 68"
+   version="1.1">
+  <script>
+     var elmt = top.document.createElement("img");
+     elmt.src = "http://evil.zz/pwned.png"
+     elmt.style.position = "absolute";
+     elmt.style.top = "0";
+     elmt.style.left="0";
+     top.document.body.appendChild(elmt);
+  </script>
+  <circle
+     cx="0"
+     cy="0"
+     r="24"
+     fill="#c8c8c8"/>
+</svg>

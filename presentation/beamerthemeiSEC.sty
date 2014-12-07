@@ -1,0 +1,78 @@
+\usepackage{euler}
+\usepackage[cm-default,quiet]{fontspec}
+\usepackage{xltxtra}
+\usepackage{pgf}
+\usepackage{fnpct}
+\defaultfontfeatures{Ligatures={Contextual,Common},Scale=MatchLowercase,
+Numbers={SlashedZero,Lining}}
+
+\setsansfont[Mapping=tex-text]{Corbel}
+\setmonofont[Scale=0.8]{Consolas}
+
+\newcommand\footurl@[1]{\footnote{\url@{#1}}}
+\DeclareRobustCommand{\footurl}{\hyper@normalise\footurl@}
+
+\usepackage{listings}
+\usepackage{underscore}
+
+\definecolor{isecblue}{cmyk}{1.00,0.55,0.10,0}
+\definecolor{nccblue}{cmyk}{0.77,0.57,0,0.5}
+%\definecolor{nccred}{cmyk}{0.0,1.0,0.79,0.20}
+\definecolor{nccred}{RGB}{196,18,48}
+\definecolor{isecgray}{gray}{0.85}
+\definecolor{isecdarkgray}{cmyk}{0.10,0.15,0.20,0.70}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\lstset{commentstyle=\color{Brown}\itshape,keywordstyle=\color{OliveGreen}\texttt\textbf,identifierstyle=\color{black}\texttt\textbf,stringstyle=\texttt\textbf\color{isecblue},showstringspaces=false,showtabs=false,showspaces=false}
+\lstdefinestyle{config}{tabsize=2,caption={},numbers=none,basicstyle=\footnotesize\ttfamily,stringstyle=\texttt}
+\lstdefinestyle{code}{caption={},captionpos=b,frame=none,aboveskip=12pt,tabsize=2,numbers=left,numberstyle=\tiny\texttt,basicstyle=\footnotesize\ttfamily,breaklines=true,numbers=none}
+\lstdefinestyle{output}{tabsize=2,caption={},numbers=none,breaklines=true,basicstyle=\scriptsize\ttfamily,stringstyle=\texttt}
+\lstalias[]{ObjC}[Objective]{C}
+\lstalias[]{CSharp}[Sharp]{C}
+\lstdefinelanguage{ECMAScript}
+{
+sensitive,
+morecomment=[l]//,
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+morestring=[b]',
+morekeywords={break, else, new, var, case, finally, return, void,
+catch, for, switch, while, continue, function, this, with, default, if,
+throw, delete, in, try, do, instanceof, typeof, abstract, enum, int,
+short, boolean, export, interface, static, byte, extends, long, super,
+char, final, native, synchronized, class, float, package, throws, const,
+goto, private, transient, debugger, implements, protected, volatile,
+double, import, public}
+}
+
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+\ProcessOptionsBeamer
+
+
+
+\mode<presentation>
+
+%\useoutertheme{sidebar}
+%\useinnertheme[shadow=true]{rounded}
+%\usecolortheme{rose}  %use this alone for plain white
+%\usecolortheme{whale} %dark colored sidebars (Palo Alto)
+%\usecolortheme{seahorse} %light colored sidebars (Hannover)
+
+\useoutertheme{infolines}
+\useinnertheme[shadow=true]{rounded}
+%\usecolortheme{seagull} %grey
+%\usecolortheme{whale} %blue
+\usecolortheme{isec} %isec blue and gray
+
+\setbeamercolor*{frametitle}{parent=palette primary}
+\setbeamerfont{block title}{size={}}
+\setbeamertemplate{navigation symbols}{}
+
+\mode
+<all>
