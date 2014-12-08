@@ -4,6 +4,15 @@ header("Content-type: text/css");
 include "funcs.php";
 ?>
 
+body {
+    font-size: 12pt;
+}
+
+code {
+    font-size: 12pt;
+    font-family: monospace;
+}
+
 /*#navigation {
     position: fixed;
     top: 0px;

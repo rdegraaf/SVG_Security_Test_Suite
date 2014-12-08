@@ -62,8 +62,8 @@ function printPolicies()
         "xfo2.svg.test"  => [NULL, "SAMEORIGIN"],
         "csp0.svg.test"  => ["default-src 'none'; style-src 'self';", NULL],
         "csp1.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'", NULL],
-        "csp2.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; object-src 'self'", NULL],
-        "csp3.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; frame-src 'self'", NULL],
+        "csp2.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'self'", NULL],
+        "csp3.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; frame-src 'self'", NULL],
         "csp4.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'self'; frame-src 'self'", NULL],
         "csp5.svg.test"  => ["default-src 'none'; script-src 'self' http://*.svg.test; style-src 'self' http://*.svg.test; img-src 'self' data: http://*.svg.test; object-src 'self' data: http://*.svg.test; frame-src 'self' data: http://*.svg.test;", NULL]
     ];

@@ -14,6 +14,12 @@
     <h1>SVG Security Test Suite</h1>
     <?php include "nav.php"; ?>
     <p>
+      <strong>Last Tested</strong>: 2014-12-07<br/>
+      <strong>Firefox</strong>: 36.0a2 aurora<br/>
+      <strong>Chrome</strong>: 41.0.2241.0 canary<br />
+      <strong>Internet Explorer</strong>: 11.0.9879.0 (Windows 10 Technical Preview)
+    </p>
+    <p>
       Each page loads SVGs from different sources under different X-Frame-Options (XFO) and 
       content-security-policy (CSP) settings.  Pages contain several related test cases, and each 
       test case is a row of SVGs loaded in different ways.  The base of each test case is a gray 
@@ -108,17 +114,24 @@
         iframe</code> tags, though I'm not sure why the designers of CSP thought that iframes 
         needed to be handled differently than objects and embeds.  <a 
         href="https://code.google.com/p/chromium/issues/detail?id=400840">Bug tracker</a>.</li>
-      <li>Chrome doesn't apply <code>style-src</code> correctly to sandboxed <code>iframe</code>s.
-        MORE DETAILS.</li>
-      <li>No browsers ever load external stylesheets for in-line SVG.</li>
+      <li>Chrome doesn't apply <code>style-src</code> correctly to sandboxed iframes.  If an SVG in 
+        a sandboxed iframe tries to load an external stylesheet from the same origin, it will be 
+        blocked by CSP unless the origin is explicitly listed in <code>style-src</code>; Chrome 
+        blocks it even under <code>style-src 'self';</code>.  SAME WITH IMG-SRC?  BUG REFERENCE</li>
+      <li>No browsers ever load external stylesheets for in-line SVG.  The <code>
+        &lt;?xml-stylesheet?&gt;</code> directive doesn't seem to be valid in HTML, so I'm not sure 
+        if there is a valid way to do this.</li>
       <li>Internet Explorer 11.0.9879.0 fails to load SVGs that contain <code>foreignObject</code> 
         blocks as static images.  It does load them as nested documents, though it does not render 
         the <code>foreignObject</code> contents.</li>
+      <li>Neither Firefox nor Chrome seem render foreignObjects in in-line SVG.  MORE DETAILS.</li>
+      <li>Chrome doesn't render objects (though it does render images) within foreignObjects in 
+        sandboxed iframes.  This used to work in really old builds like 27.  MORE DETAILS.</li>
     </ul>
     <h2>Future work</h2>
     <ul>
       <li>Mobile browsers</li>
-      <li>HTML and embedded SVG with different CSPs</li>
+      <li>HTML and embedded SVG with different CSPs, especially if they're same-origin.</li>
       <li>SVG's <code>use</code> element and anything else that takes a URI argument</li>
       <li>SVG 2.0: <code>iframe</code> and <code>canvas</code> and other stuff</li>
       <li>IE12's CSP implementation</li>
