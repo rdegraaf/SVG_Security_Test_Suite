@@ -16,6 +16,7 @@
           <td>Base</td>
           <td>XFO1</td>
           <td>XFO2</td>
+          <td>CSP0</td>
           <td>CSP1</td>
           <td>CSP2</td>
           <td>CSP3</td>
@@ -30,6 +31,7 @@
             addLink("http://base.svg.test/same-origin.php");
             addLink("http://xfo1.svg.test/same-origin.php");
             addLink("http://xfo2.svg.test/same-origin.php");
+            addLink("http://csp0.svg.test/same-origin.php");
             addLink("http://csp1.svg.test/same-origin.php");
             addLink("http://csp2.svg.test/same-origin.php");
             addLink("http://csp3.svg.test/same-origin.php");
@@ -43,6 +45,7 @@
             addLink("http://base.svg.test/cross-origin.php");
             addLink("http://xfo1.svg.test/cross-origin.php");
             addLink("http://xfo2.svg.test/cross-origin.php");
+            addLink("http://csp0.svg.test/cross-origin.php");
             addLink("http://csp1.svg.test/cross-origin.php");
             addLink("http://csp2.svg.test/cross-origin.php");
             addLink("http://csp3.svg.test/cross-origin.php");
@@ -56,6 +59,7 @@
             addLink("http://base.svg.test/cross-origin-no-csp.php");
             addLink("http://xfo1.svg.test/cross-origin-no-csp.php");
             addLink("http://xfo2.svg.test/cross-origin-no-csp.php");
+            addLink("http://csp0.svg.test/cross-origin-no-csp.php");
             addLink("http://csp1.svg.test/cross-origin-no-csp.php");
             addLink("http://csp2.svg.test/cross-origin-no-csp.php");
             addLink("http://csp3.svg.test/cross-origin-no-csp.php");
@@ -69,6 +73,7 @@
             addLink("http://base.svg.test/emb-so-image.php");
             addLink("http://xfo1.svg.test/emb-so-image.php");
             addLink("http://xfo2.svg.test/emb-so-image.php");
+            addLink("http://csp0.svg.test/emb-so-image.php");
             addLink("http://csp1.svg.test/emb-so-image.php");
             addLink("http://csp2.svg.test/emb-so-image.php");
             addLink("http://csp3.svg.test/emb-so-image.php");
@@ -82,6 +87,7 @@
             addLink("http://base.svg.test/emb-do-image.php");
             addLink("http://xfo1.svg.test/emb-do-image.php");
             addLink("http://xfo2.svg.test/emb-do-image.php");
+            addLink("http://csp0.svg.test/emb-do-image.php");
             addLink("http://csp1.svg.test/emb-do-image.php");
             addLink("http://csp2.svg.test/emb-do-image.php");
             addLink("http://csp3.svg.test/emb-do-image.php");
@@ -95,6 +101,7 @@
             addLink("http://base.svg.test/emb-so-object.php");
             addLink("http://xfo1.svg.test/emb-so-object.php");
             addLink("http://xfo2.svg.test/emb-so-object.php");
+            addLink("http://csp0.svg.test/emb-so-object.php");
             addLink("http://csp1.svg.test/emb-so-object.php");
             addLink("http://csp2.svg.test/emb-so-object.php");
             addLink("http://csp3.svg.test/emb-so-object.php");
@@ -108,6 +115,7 @@
             addLink("http://base.svg.test/emb-do-object.php");
             addLink("http://xfo1.svg.test/emb-do-object.php");
             addLink("http://xfo2.svg.test/emb-do-object.php");
+            addLink("http://csp0.svg.test/emb-do-object.php");
             addLink("http://csp1.svg.test/emb-do-object.php");
             addLink("http://csp2.svg.test/emb-do-object.php");
             addLink("http://csp3.svg.test/emb-do-object.php");
@@ -121,6 +129,7 @@
             addLink("http://base.svg.test/recursion.php");
             addLink("http://xfo1.svg.test/recursion.php");
             addLink("http://xfo2.svg.test/recursion.php");
+            addLink("http://csp0.svg.test/recursion.php");
             addLink("http://csp1.svg.test/recursion.php");
             addLink("http://csp2.svg.test/recursion.php");
             addLink("http://csp3.svg.test/recursion.php");

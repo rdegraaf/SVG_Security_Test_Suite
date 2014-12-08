@@ -60,17 +60,18 @@ function printPolicies()
         "nocsp.svg.test" => [NULL, NULL],
         "xfo1.svg.test"  => [NULL, "DENY"],
         "xfo2.svg.test"  => [NULL, "SAMEORIGIN"],
+        "csp0.svg.test"  => ["default-src 'none'; style-src 'self';", NULL],
         "csp1.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'", NULL],
         "csp2.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; object-src 'self'", NULL],
         "csp3.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; frame-src 'self'", NULL],
         "csp4.svg.test"  => ["default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'self'; frame-src 'self'", NULL],
-        "csp5.svg.test"  => ["default-src 'none'; script-src 'self' http://*.svg.test; style-src 'self' http://*.svg.test; img-src 'self' data: http://*.svg.test; object-src 'self' http://*.svg.test; frame-src 'self' http://*.svg.test;", NULL]
+        "csp5.svg.test"  => ["default-src 'none'; script-src 'self' http://*.svg.test; style-src 'self' http://*.svg.test; img-src 'self' data: http://*.svg.test; object-src 'self' data: http://*.svg.test; frame-src 'self' data: http://*.svg.test;", NULL]
     ];
 
     echo "<h2>Policy:</h2>";
     echo "<ul>";
-    echo "<li>CSP: ", $policies[$_SERVER['SERVER_NAME']][0], "</li>";
-    echo "<li>XFO: ", $policies[$_SERVER['SERVER_NAME']][1], "</li>";
+    echo "<li>CSP: <code>", $policies[$_SERVER['SERVER_NAME']][0], "</code></li>";
+    echo "<li>XFO: <code>", $policies[$_SERVER['SERVER_NAME']][1], "</code></li>";
     echo "</ul>";
 }
 ?>

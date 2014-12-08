@@ -21,11 +21,11 @@ function writeRow($url, $style)
     echo "<p>";
     echo "<span class=\"image\"><img src=\"", $url, "\" alt=\"circle\" width=\"68\" height=\"68\"/></span>";
     echo "<span class=\"image ", $style,"\"></span>";
+    echo "<span class=\"image\"><img width=\"68\" height=\"68\" alt=\"circle\" src=\"data:image/svg+xml;base64,",base64_encode(getFile($url)),"\"/></span>";
     echo "<object data=\"", $url, "\" type=\"image/svg+xml\" width=\"68\" height=\"68\"></object>";
     echo "<embed src=\"", $url, "\" type=\"image/svg+xml\" width=\"68\" height=\"68\"></embed>";
     echo "<iframe src=\"", $url, "\" width=\"68\" height=\"68\"></iframe>";
     echo "<iframe src=\"", $url, "\" width=\"68\" height=\"68\" sandbox=\"\"></iframe>";
-    echo "<span class=\"image\"><img width=\"68\" height=\"68\" alt=\"circle\" src=\"data:image/svg+xml;base64,",base64_encode(getFile($url)),"\"/></span>";
     echo "<span class=\"image\">",getFile($url),"</span>";
     echo "</p>";
 }

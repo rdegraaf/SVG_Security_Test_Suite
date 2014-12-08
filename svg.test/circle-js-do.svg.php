@@ -13,7 +13,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
    viewBox="-34 -34 68 68"
    version="1.1">
   <?php
-    echo "<script type=\"text/javascript\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/circle.js", "\"></script>";
+    echo "<script type=\"text/javascript\" xlink:href=\"", "http://", altHostName($_SERVER['SERVER_NAME']), "/c006.js", "\"></script>";
   ?>
   <circle
      cx="0"
