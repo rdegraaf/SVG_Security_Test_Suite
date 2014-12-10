@@ -54,7 +54,7 @@ relevant standards, please point it out.
     CSP, and only the child document's CSP applies to the child document, then 
     the child document may be able to interact with the parent in ways that 
     violates its CSP (for instance, by loading a script that manipulates the 
-    parent document from a source that is not allowed by the parent document).  
+    parent document from a source that is not allowed by the parent document). 
     Consequently, my position is that CSPs on nested documents must be 
     composed: parent document CSPs must apply to all child documents in 
     addition to their own CSPs.  An argument might be made that this is 
@@ -98,7 +98,7 @@ Known security model violations
     tracker](https://code.google.com/p/chromium/issues/detail?id=378500).
     (bug-repros/*.chromebug.test)
     
-*   Prior to version 28.0, Firefox did not apply CSP to sandboxed iframes.  
+*   Prior to version 28.0, Firefox did not apply CSP to sandboxed iframes. 
     This appears to have been due to wider problems with sandboxed iframes.
 
 *   All browsers display in-line SVG even under CSP `default-src 'none';`.  As 
@@ -138,18 +138,19 @@ Known stability and functionality issues
     IMG-SRC?**  **BUG REFERENCE?**
 
 *   No browsers ever load external stylesheets for in-line SVG.  The 
-    `<?xml-stylesheet?> directive doesn't seem to be valid in HTML, so I'm not 
+    `<?xml-stylesheet?>` directive doesn't seem to be valid in HTML, so I'm not 
     sure if there is a valid way to do this.
 
 *   Internet Explorer 11.0.9879.0 fails to load SVGs that contain 
     `foreignObject` blocks as static images.  It does load them as nested 
     documents, though it does not render the `foreignObject` contents.
-*   Neither Firefox nor Chrome seem render foreignObjects in in-line SVG.  
+
+*   Neither Firefox nor Chrome seem to render foreignObjects in in-line SVG. 
     **MORE DETAILS?**
 
 *   Chrome doesn't render objects (though it does render images) within 
     foreignObjects in sandboxed iframes.  This used to work in really old 
-    builds like 27.  &&MORE DETAILS?**
+    builds like 27.  **MORE DETAILS?**
 
 
 Future work
@@ -158,6 +159,7 @@ Future work
 *   Mobile browsers
 *   HTML and embedded SVG with different CSPs, especially if they're 
     same-origin.
+*   SVG with in-line `data:` URIs.
 *   SVG's `use` element and anything else that takes a URI argument
 *   SVG 2.0: <code>iframe</code> and <code>canvas</code> and other stuff
 *   IE12's CSP implementation
@@ -165,4 +167,3 @@ Future work
 
 
 TODO: document repro cases in README
-TODO: verify latest build of Firefox

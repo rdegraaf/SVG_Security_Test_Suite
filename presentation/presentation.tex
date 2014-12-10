@@ -136,8 +136,7 @@
 \logo{\includegraphics[height=0.8cm]{images/iseclogo.pdf}}
 
 \begin{frame}{Outline}
-  TODO: Basic web security
-  TODO: Publish test suite
+  TODO: Test suite details
   TODO: New vulns?
   TODO: Firefox
 
@@ -762,6 +761,13 @@ Work-around: list the origin explicitly in \texttt{style-src} rather than relyin
     \item Firefox did not properly apply CSP to sandboxed iframes prior to version 28.0.  It is still not properly applied in the Firefox 24 ESR branch\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}}.  This appears to have been due to wider problems with sandboxed iframes.
     \item Both Chrome\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}} and Firefox\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}} display in-line SVG even under the CSP \texttt{default-src 'none';}.  There does not appear to be agreement on whether an in-line SVG is an image or nested document, or something else.  My position is that since \texttt{data:} URIs can be used to create in-line images or nested documents and can be blocked using CSP, in-line SVG should be blockable as well.
     %\item \texttt{style-src} didn't prevent Chrome from incorrectly loading cross-origin stylesheets from static image SVGs\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{SVG Security Test Suite}
+  \begin{itemize}
+    \item \url{https://github.com/rdegraaf/SVG}
+    \item TODO: more information
   \end{itemize}
 \end{frame}
 
