@@ -103,15 +103,12 @@
 \subtitle{When an image isn't just an image}
 \author[Rennie deGraaf]{Rennie deGraaf}
 \institute[iSEC Partners]{\Large iSEC Partners}
-\date[OWASP Seattle]{12 November 2014}
-\titlegraphic{\includegraphics[height=1.5cm]{images/OWASP_logo}}
+\date[iSEC Open Forum]{11 December 2014}
+\titlegraphic{\includegraphics[height=1.5cm]{images/iseclogo}}
 
 \subject{Application Security}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
-
-% Here is the logo
-\logo{\includegraphics[height=0.8cm]{images/iseclogo.pdf}}
 
 % Uncomment this, if you want the table of contents to pop up at
 % the beginning of each subsection:
@@ -135,10 +132,14 @@
   \titlepage
 \end{frame}
 
+% Defined after the title page so that the logo doesn't appear there
+\logo{\includegraphics[height=0.8cm]{images/iseclogo.pdf}}
+
 \begin{frame}{Outline}
   TODO: Basic web security
-  TODO: New vulns
-  TODO: test suite
+  TODO: Publish test suite
+  TODO: New vulns?
+  TODO: Firefox
 
   \tableofcontents
   % You might wish to add the option [pausesections]
@@ -147,11 +148,25 @@
 
 \section{Review of web security}
 
+\begin{frame}[fragile]{Web Security}
+  \begin{itemize}
+    \item Web security is a confusing mix of rules that apply to different things, work-arounds to those rules, and mitigations against attacks permitted by those rules.
+    \item Most important rule: Same-Origin Policy
+    \item Most important mitigation: Content Security Policy
+  \end{itemize}
+\end{frame}
+
 \subsection{Same-Origin Policy}
 
-\begin{frame}[fragile]{Same-Origin Policy}{The traditional security model for the web}
+\begin{frame}[fragile]{Same-Origin Policy}
   \begin{itemize}
-    \item Something needs to go here...
+    \item An \emph{origin} is a (protocol, host, port) tuple.
+    \item Unless you're Internet Explorer, which ignores the port.
+    \item Scripts running inside a document from one origin can only interact with documents from the same origin.
+    \item \url{http://www.example.come/somedir/page.html} has the same origin as \url{http://www.example.com/otherdir/doc.html}, but not the same origin as \url{https://www.example.com/somedir/page2.html} or \url{http://en.example.com}.
+    \item The origin of a script is the origin of the page that loaded it, not the origin from which the script was loaded.
+    \item This restriction can be relaxed in various ways.
+    \item Cookies, Flash, \texttt{file:} URIs, and some other things have different rules.
   \end{itemize}
 \end{frame}
 
@@ -159,13 +174,13 @@
 
 \begin{frame}[fragile]{Content Security Policy}{An introduction}
   \begin{itemize}
-    \item Exploit mitigation system. 
+    %\item Exploit mitigation system. 
     \item First standardized in 2012.
-    \item Firefox and Chrome have supported it for a while.  It's ``in development'' for IE 12\footnote{\url{http://status.modern.ie/contentsecuritypolicy}}.
+    \item Firefox and Chrome have supported it for a while.  The latest Internet Explorer technical preview build also supports it.
     \item Policies restrict the allowed sources for scripts, styles, images, etc.  Resources may only come from white-listed origins.
     \item Blocks mixed content: \texttt{eval}, in-line scripts and styles, \texttt{data:} URIs, etc.
     \item Can be used to restrict content to \texttt{https:} URIs.
-    \item Sent by the server in \texttt{content-security-policy} headers; enforced by the browser.
+    \item Sent by the server in \texttt{Content-Security-Policy} headers; enforced by the browser.
   \end{itemize}
 \end{frame}
 
@@ -207,11 +222,11 @@
   \setbeamercovered{opaque}
   \begin{itemize}[<+->]
     \item Defaults to not allowing any content from any source.
-    \item Styles are only allowed from external files at the same origin.
-    \item Scripts are only allowed from external files at the same origin, and from other origins over HTTPS.
-    \item Static images are allowed from from files at the same origin, \texttt{data:} URIs, and from files at \texttt{*.svg.test}.
-    \item Objects and frames are allowed from the same origin and from \texttt{http://nocsp.svg.test}.
-    \item Media, fonts, and connections are not allowed on any origin.
+    \item Styles are only allowed from external files at the same source.
+    \item Scripts are only allowed from external files at the same source, and from other source over HTTPS.
+    \item Static images are allowed from from files at the same source, \texttt{data:} URIs, and from files at \texttt{*.svg.test}.
+    \item Objects and frames are allowed from the same source and from \texttt{http://nocsp.svg.test}.
+    \item Media, fonts, and connections are not allowed on any source.
   \end{itemize}
 \end{frame}
 
@@ -220,7 +235,7 @@
     \item Think ASLR+DEP for web apps.
     \item It's hard to get XSS if the browser will only execute scripts from white-listed static documents and \texttt{eval} is banned globally.
     \item A lot of web frameworks like to mix content, scripts, and styles, so get started on separating them as soon as possible.
-    \item More information: \url{https://www.isecpartners.com/media/106598/csp_best_practices.pdf}
+    \item More information: \url{http://content-security-policy.com/}, \url{https://www.isecpartners.com/media/106598/csp_best_practices.pdf}
     %\item It also applies to SVG!
   \end{itemize}
 \end{frame}
@@ -239,8 +254,12 @@
     \item Current version is 1.1, published in 2011
     \item Version 2.0 is in development
     \item First browser with native support was Konqueror in 2004; 
-    \item IE was the last major browser to add native SVG support (in 2011)
+    \item IE was the last major browser to add native SVG support (IE9, in 2011)
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Disclaimer}{I am not an artist.}
+  \hfill\includegraphics[height=5cm]{includes/dammitjim}\hspace*{\fill}
 \end{frame}
 
 \begin{frame}[fragile]{A simple example}{Source code}
@@ -249,10 +268,6 @@
 
 \begin{frame}[fragile]{A simple example}{As rendered}
   \hfill\includegraphics[height=2cm]{includes/circle}\hspace*{\fill}
-\end{frame}
-
-\begin{frame}[fragile]{A simple example}{I am not an artist.}
-  \hfill\includegraphics[height=5cm]{includes/dammitjim}\hspace*{\fill}
 \end{frame}
 
 \subsection{Using SVG with HTML}
@@ -527,6 +542,7 @@
   \caption{Internet Explorer}
 \end{subfigure}
 \end{figure}
+CSP \emph{does} block external CSS correctly in the 11.0.9879.0 technical preview build.
 \end{frame}
 
 \begin{frame}[fragile]{Chrome loads cross-origin CSS}{Source}
@@ -569,7 +585,7 @@
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \lstinputlisting[style=small2XML,linebackgroundcolor={\btLstHL<1>{14-15}}]{includes/recurse1.svg}
+  \lstinputlisting[style=small2XML,linebackgroundcolor={\btLstHL<1>{15-16}}]{includes/recurse1.svg}
 \end{subfigure}
 \end{figure}
 \end{frame}
@@ -738,13 +754,14 @@ When an SVG with in-line CSS is loaded with \texttt{style-src 'self'} from a sta
   \caption{Chrome}
 \end{subfigure}
 \end{figure}
+Work-around: list the origin explicitly in \texttt{style-src} rather than relying on \texttt{'self';}
 \end{frame}
 
 \begin{frame}[fragile]{Other issues}
   \begin{itemize}
     \item Firefox did not properly apply CSP to sandboxed iframes prior to version 28.0.  It is still not properly applied in the Firefox 24 ESR branch\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}}.  This appears to have been due to wider problems with sandboxed iframes.
-    \item Both Chrome\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}} and Firefox\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}} display in-line SVG even under the CSP \texttt{default-src 'none';}.  There does not appear to be agreement on whether an in-line SVG is an image or something else.  My position is that since \texttt{data:} URIs can be blocked using \texttt{img-src}, in-line SVG should be blockable as well.
-    \item \texttt{style-src} didn't prevent Chrome from incorrectly loading cross-origin stylesheets from static image SVGs\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}}.
+    \item Both Chrome\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}} and Firefox\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}} display in-line SVG even under the CSP \texttt{default-src 'none';}.  There does not appear to be agreement on whether an in-line SVG is an image or nested document, or something else.  My position is that since \texttt{data:} URIs can be used to create in-line images or nested documents and can be blocked using CSP, in-line SVG should be blockable as well.
+    %\item \texttt{style-src} didn't prevent Chrome from incorrectly loading cross-origin stylesheets from static image SVGs\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}}.
   \end{itemize}
 \end{frame}
 
