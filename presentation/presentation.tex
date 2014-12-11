@@ -136,10 +136,6 @@
 \logo{\includegraphics[height=0.8cm]{images/iseclogo.pdf}}
 
 \begin{frame}{Outline}
-  TODO: Test suite details
-  TODO: New vulns?
-  TODO: Firefox
-
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
@@ -149,6 +145,7 @@
 
 \begin{frame}[fragile]{Web Security}
   \begin{itemize}
+    \item A page can request resources from any source, but there are restrictions on how those resources can interact.
     \item Web security is a confusing mix of rules that apply to different things, work-arounds to those rules, and mitigations against attacks permitted by those rules.
     \item Most important rule: Same-Origin Policy
     \item Most important mitigation: Content Security Policy
@@ -161,7 +158,7 @@
   \begin{itemize}
     \item An \emph{origin} is a (protocol, host, port) tuple.
     \item Unless you're Internet Explorer, which ignores the port.
-    \item Scripts running inside a document from one origin can only interact with documents from the same origin.
+    \item Scripts running inside a page from one origin can only interact with resources from the same origin.
     \item \url{http://www.example.come/somedir/page.html} has the same origin as \url{http://www.example.com/otherdir/doc.html}, but not the same origin as \url{https://www.example.com/somedir/page2.html} or \url{http://en.example.com}.
     \item The origin of a script is the origin of the page that loaded it, not the origin from which the script was loaded.
     \item This restriction can be relaxed in various ways.
@@ -660,7 +657,7 @@ Tab crash in IE 11 and 12 DC1 after >4000 iterations.
 \begin{frame}[fragile]{Recursion}{As rendered in IE}
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{includes/recurse-ie-image}
+  \includegraphics[height=4.5cm]{includes/recurse-ie-image}
 \end{figure}
 IE 11 and 12 DC1 run >250,000 iterations before crashing, which takes a while.
 
@@ -759,16 +756,25 @@ Work-around: list the origin explicitly in \texttt{style-src} rather than relyin
 \begin{frame}[fragile]{Other issues}
   \begin{itemize}
     \item Firefox did not properly apply CSP to sandboxed iframes prior to version 28.0.  It is still not properly applied in the Firefox 24 ESR branch\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}}.  This appears to have been due to wider problems with sandboxed iframes.
+    \item Neither Chrome nor Firefox render foreignObjects in in-line SVG.
     \item Both Chrome\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}} and Firefox\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}} display in-line SVG even under the CSP \texttt{default-src 'none';}.  There does not appear to be agreement on whether an in-line SVG is an image or nested document, or something else.  My position is that since \texttt{data:} URIs can be used to create in-line images or nested documents and can be blocked using CSP, in-line SVG should be blockable as well.
     %\item \texttt{style-src} didn't prevent Chrome from incorrectly loading cross-origin stylesheets from static image SVGs\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}}.
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{SVG Security Test Suite}
-  \begin{itemize}
-    \item \url{https://github.com/rdegraaf/SVG}
-    \item TODO: more information
-  \end{itemize}
+  \begin{columns}[c]
+    \begin{column}[c]{.5\textwidth}
+      \includegraphics[height=7.5cm]{images/test-suite}
+    \end{column}
+    \begin{column}[c]{.5\textwidth}
+      \begin{itemize}
+        \item \url{https://github.com/rdegraaf/SVG_Security_Test_Suite}
+        \item Loads different SVGs with internal and external scripts, styles, embedded images, and embedded objects in eight different ways under various XFO and CSP settings.
+        \item Just serve it, load it, and look for discrepancies.
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \section{Conclusion}
