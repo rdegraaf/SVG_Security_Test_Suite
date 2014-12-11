@@ -162,8 +162,17 @@ Future work
 *   SVG with in-line `data:` URIs.
 *   SVG's `use` element and anything else that takes a URI argument
 *   SVG 2.0: <code>iframe</code> and <code>canvas</code> and other stuff
-*   IE12's CSP implementation
 *   CSP 2
 
 
-TODO: document repro cases in README
+Contact information
+-------------------
+
+Rennie deGraaf <rennie.degraaf@gmail.com>
+
+
+To Do
+-----
+
+*   Better documentation for bug-repros/*
+*   Re-run the recursive SVG tests on current browsers
