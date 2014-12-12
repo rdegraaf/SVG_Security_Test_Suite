@@ -8,6 +8,9 @@
     <meta charset="UTF-8"/>
     <title>SVG Test: <?php echo $_SERVER['SERVER_NAME'], $_SERVER['REQUEST_URI'] ?></title>
     <link rel="stylesheet" type="text/css" href="index.css.php"/>
+    <?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://", altHostName($_SERVER['SERVER_NAME']), "/c001.css", "\"/>" ?>
+    <link rel="stylesheet" type="text/css" href="c002.css"/>
+    <link rel="stylesheet" type="text/css" href="c003.css"/>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
@@ -20,11 +23,11 @@
         "base.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "two"], 
         "xfo2.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "two"], 
+        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "two"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "two"], 
+        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "two"], 
         "csp5.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
       ];
       $url = "recurse.svg";
@@ -37,11 +40,11 @@
         "base.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "two"], 
         "xfo2.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "two"], 
+        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "two"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "two"], 
+        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "two"], 
         "csp5.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
       ];
       $url = "recurse2_1.svg";
@@ -54,11 +57,11 @@
         "base.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "two"], 
         "xfo2.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "two"], 
+        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "two"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "two"], 
+        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "two"], 
         "csp5.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
       ];
       $url = "recurse10_0.svg";
@@ -71,11 +74,11 @@
         "base.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "one"], 
         "xfo2.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "two"], 
+        "csp2.svg.test" => ["one", "zero", "one", "two", "two", "zero", "zero", "two"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "two", "two", "two"], 
+        "csp4.svg.test" => ["one", "zero", "one", "two", "two", "two", "two", "two"], 
         "csp5.svg.test" => ["one", "one", "one", "two", "two", "two", "two", "two"], 
       ];
       $url = "recurse-html-img.svg";
@@ -88,11 +91,11 @@
         "base.svg.test" => ["one", "one", "one", "one", "one", "one", "one", "one"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "one"], 
         "xfo2.svg.test" => ["one", "one", "one", "one", "one", "one", "one", "one"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "one", "one", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "one", "one", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "one", "one", "one", "one", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "one"], 
+        "csp2.svg.test" => ["one", "zero", "one", "one", "one", "zero", "zero", "two"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "one", "one", "one"], 
+        "csp4.svg.test" => ["one", "zero", "one", "one", "one", "one", "one", "two"], 
         "csp5.svg.test" => ["one", "one", "one", "one", "one", "one", "one", "one"], 
       ];
       $url = "recurse-html-object.svg";
@@ -105,11 +108,11 @@
         "base.svg.test" => ["one", "one", "one", "ten", "ten", "ten", "ten", "ten"], 
         "xfo1.svg.test" => ["one", "one", "one", "zero", "zero", "zero", "zero", "one"], 
         "xfo2.svg.test" => ["one", "one", "one", "ten", "ten", "ten", "ten", "ten"], 
-        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "zero"], 
-        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "zero"], 
-        "csp2.svg.test" => ["one", "zero", "one", "ten", "ten", "zero", "zero", "zero"], 
-        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "one", "one", "zero"], 
-        "csp4.svg.test" => ["one", "zero", "one", "ten", "ten", "ten", "ten", "zero"], 
+        "csp0.svg.test" => ["zero", "zero", "zero", "zero", "zero", "zero", "zero", "one"], 
+        "csp1.svg.test" => ["one", "zero", "one", "zero", "zero", "zero", "zero", "one"], 
+        "csp2.svg.test" => ["one", "zero", "one", "ten", "ten", "zero", "zero", "ten"], 
+        "csp3.svg.test" => ["one", "zero", "one", "zero", "zero", "one", "one", "one"], 
+        "csp4.svg.test" => ["one", "zero", "one", "ten", "ten", "ten", "ten", "ten"], 
         "csp5.svg.test" => ["one", "one", "one", "ten", "ten", "ten", "ten", "ten"], 
       ];
       $url = "recurse-html-object-10_0.svg";

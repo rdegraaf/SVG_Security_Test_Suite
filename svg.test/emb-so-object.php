@@ -8,6 +8,9 @@
     <meta charset="UTF-8"/>
     <title>SVG Test: <?php echo $_SERVER['SERVER_NAME'], $_SERVER['REQUEST_URI'] ?></title>
     <link rel="stylesheet" type="text/css" href="index.css.php"/>
+    <?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://", altHostName($_SERVER['SERVER_NAME']), "/c001.css", "\"/>" ?>
+    <link rel="stylesheet" type="text/css" href="c002.css"/>
+    <link rel="stylesheet" type="text/css" href="c003.css"/>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body id="same-origin">
@@ -20,11 +23,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "gray with gray child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-html-circle.svg";
@@ -37,11 +40,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "gray with gray child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-html-circle-css.svg";
@@ -54,11 +57,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with orange child", "gray with orange child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with orange child", "gray with orange child", "empty", "empty", "gray with orange child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
       ];
       $url = "circle-emb-html-circle-css-so.svg";
@@ -71,11 +74,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "gray with gray child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
       ];
       $url = "circle-emb-html-circle-css-do.svg";
@@ -88,11 +91,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "gray with gray child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-html-circle-js.svg";
@@ -105,11 +108,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered child", "gray with red-dashed bordered child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered child", "gray with red-dashed bordered child", "empty", "empty", "gray with red-dash bordered child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
       ];
       $url = "circle-emb-html-circle-js-so.svg";
@@ -122,11 +125,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "empty", "empty", "gray with gray child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with red-dash bordered gray child", "gray with gray child", "gray with red-dash bordered gray child"], 
       ];
       $url = "circle-emb-html-circle-js-do.svg";
@@ -139,11 +142,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with orange child", "gray with red-dash bordered orange child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with orange child", "gray with red-dash bordered orange child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"],
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with orange child", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "empty", "empty", "gray with red-dash bordered orange child"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"],
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with orange child", "gray with red-dash bordered orange child"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with red-dash bordered orange child", "gray with orange child", "gray with red-dash bordered orange child"], 
       ];
       $url = "circle-emb-html-circle-css-js-external.svg";

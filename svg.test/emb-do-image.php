@@ -8,6 +8,9 @@
     <meta charset="UTF-8"/>
     <title>SVG Test: <?php echo $_SERVER['SERVER_NAME'], $_SERVER['REQUEST_URI'] ?></title>
     <link rel="stylesheet" type="text/css" href="index.css.php"/>
+    <?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://", altHostName($_SERVER['SERVER_NAME']), "/c001.css", "\"/>" ?>
+    <link rel="stylesheet" type="text/css" href="c002.css"/>
+    <link rel="stylesheet" type="text/css" href="c003.css"/>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body id="same-origin">
@@ -20,11 +23,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle.svg.php";
@@ -37,11 +40,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with orange child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child", "gray with orange child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-css.svg.php";
@@ -54,11 +57,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-css-so.svg.php";
@@ -71,11 +74,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-css-do.svg.php";
@@ -88,11 +91,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-js.svg.php";
@@ -105,11 +108,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-js-so.svg.php";
@@ -122,11 +125,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-js-do.svg.php";
@@ -139,11 +142,11 @@
         "base.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
         "xfo1.svg.test" => ["gray", "gray", "gray", "empty", "empty", "empty", "empty", "gray with gray child"], 
         "xfo2.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
-        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"],
-        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "empty"], 
-        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "empty"], 
-        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "empty"], 
-        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "empty"], 
+        "csp0.svg.test" => ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "gray"],
+        "csp1.svg.test" => ["gray", "empty", "gray", "empty", "empty", "empty", "empty", "gray"], 
+        "csp2.svg.test" => ["gray", "empty", "gray", "gray", "gray", "empty", "empty", "gray"], 
+        "csp3.svg.test" => ["gray", "empty", "gray", "empty", "empty", "gray", "gray", "gray"], 
+        "csp4.svg.test" => ["gray", "empty", "gray", "gray", "gray", "gray", "gray", "gray"], 
         "csp5.svg.test" => ["gray", "gray", "gray", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child", "gray with gray child"], 
       ];
       $url = "circle-emb-xd-circle-css-js-external.svg.php";

@@ -43,12 +43,12 @@ relevant standards, please point it out.
 
 *   It is unclear whether in-line SVG should be treated as images or nested 
     documents which should be blockable by CSP, or as something else to which 
-    CSP does not apply.  I am taking the position that they should be covered 
-    by CSP, since `data:` URIs can also be used to load in-line images and 
-    nested documents, and they need to be specifically permitted in CSP. 
-    In-line SVGs are not static images, so covering them under `img-src` would 
-    not be appropriate; treating them like `data:` URIs to `iframe` tags seems 
-    most fitting.
+    CSP does not apply.  Brad Hill tells me that the consensus among browser 
+    vendors is that in-line CSS is just tags and does not create a nested 
+    browsing context, so it does not make sense to apply CSP.  I'm not sure 
+    that I agree; conceptually, there's not a lot of difference between an 
+    in-line SVG and an SVG encoded as a `data:` URI to an `object` tag.  But 
+    I'll go with the de-facto standard for now.
 
 *   If one document with a CSP loads a child document with a more permissive 
     CSP, and only the child document's CSP applies to the child document, then 
@@ -137,10 +137,6 @@ Known stability and functionality issues
     `style-src`; Chrome blocks it even under `style-src 'self';`.  **SAME WITH 
     IMG-SRC?**  **BUG REFERENCE?**
 
-*   No browsers ever load external stylesheets for in-line SVG.  The 
-    `<?xml-stylesheet?>` directive doesn't seem to be valid in HTML, so I'm not 
-    sure if there is a valid way to do this.
-
 *   Internet Explorer 11.0.9879.0 fails to load SVGs that contain 
     `foreignObject` blocks as static images.  It does load them as nested 
     documents, though it does not render the `foreignObject` contents.
@@ -176,3 +172,5 @@ To Do
 
 *   Better documentation for bug-repros/*
 *   Re-run the recursive SVG tests on current browsers
+*   Submit bug reports
+*   Update composed CSP stuff

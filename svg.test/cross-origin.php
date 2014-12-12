@@ -8,6 +8,9 @@
     <meta charset="UTF-8"/>
     <title>SVG Test: <?php echo $_SERVER['SERVER_NAME'], $_SERVER['REQUEST_URI'] ?></title>
     <link rel="stylesheet" type="text/css" href="index.css.php"/>
+    <?php echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://", altHostName($_SERVER['SERVER_NAME']), "/c001.css", "\"/>" ?>
+    <link rel="stylesheet" type="text/css" href="c002.css"/>
+    <link rel="stylesheet" type="text/css" href="c003.css"/>
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body id="different-origin">
