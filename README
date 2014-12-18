@@ -65,7 +65,8 @@ Known security model violations
 
 *   Internet Explorer always loads and applies external CSS on static images, 
     regardless of its origin (though CSP blocks them correctly in the 
-    11.0.9879.0 technical preview build).
+    11.0.9879.0 technical preview build).  This issue was reported to Microsoft 
+    in summer 2014.
 
 *   Old Chrome builds always loaded and applied external CSS on static images 
     (unless banned by CSP), but only if the CSS came from a different origin 

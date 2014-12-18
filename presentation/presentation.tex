@@ -601,6 +601,7 @@ CSP \emph{does} block external CSS correctly in the 11.0.9879.0 technical previe
 \end{subfigure}
 \end{figure}
 {\tiny Reported to Microsoft; ``Not a security bug''.}
+CSP \emph{does} block external images correctly in the 11.0.9879.0 technical preview build.
 \end{frame}
 
 \begin{frame}[fragile]{Recursion}{We get SVGnal. Main SVGeen turn on.}
@@ -736,7 +737,7 @@ When an SVG with in-line CSS is loaded with \texttt{style-src 'self'} from a sta
 \end{frame}
 
 \begin{frame}[fragile]{Sandboxed \texttt{iframe}s in Chrome}
-  Chrome doesn't apply \texttt{style-src} correctly to sandboxed \texttt{iframe}s\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=443444}}.
+  Chrome ignores \texttt{'self'} on all CSP directives in sandboxed \texttt{iframe}s\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=443444}}.
 \begin{figure}
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -750,12 +751,12 @@ When an SVG with in-line CSS is loaded with \texttt{style-src 'self'} from a sta
   \caption{Chrome}
 \end{subfigure}
 \end{figure}
-Work-around: list the origin explicitly in \texttt{style-src} rather than relying on \texttt{'self';}
+Work-around: list the origin explicitly in CSP rather than relying on \texttt{'self';}
 \end{frame}
 
 \begin{frame}[fragile]{Other issues}
   \begin{itemize}
-    \item Firefox did not properly apply CSP to sandboxed iframes prior to version 28.0.  It is still not properly applied in the Firefox 24 ESR branch\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}}.  This appears to have been due to wider problems with sandboxed iframes.
+    \item Firefox did not properly apply CSP to sandboxed iframes prior to version 28.0.  This appears to have been due to wider problems with sandboxed iframes.
     \item Neither Chrome nor Firefox render foreignObjects in in-line SVG.
     %\item Both Chrome\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}} and Firefox\footnote{\url{https://bugzilla.mozilla.org/show_bug.cgi?id=1018310}} display in-line SVG even under the CSP \texttt{default-src 'none';}.  The position of the browser authors is that in-line SVG is ``just tags'' and not subject to CSP.  I'm not sure that I agree; conceptually, there isn't much difference between an in-line SVG and an SVG encoded as a \texttt{data:} URI to an \texttt{object} tag, which can be restricted using CSP.
     %\item \texttt{style-src} didn't prevent Chrome from incorrectly loading cross-origin stylesheets from static image SVGs\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=378500}}.
