@@ -126,6 +126,7 @@ Known stability and functionality issues
     source with a CSP that permits `img-src 'self'` will be blocked.  I haven't 
     tested other CSP directives, but expect that the same issue will occur.
     [Bug tracker](https://code.google.com/p/chromium/issues/detail?id=443444).
+    (bug-repros/*.chrome-iframe-self.test)
 
 *   Internet Explorer 11.0.9879.0 fails to load SVGs that contain 
     `foreignObject` blocks as static images.  It does load them as nested 
@@ -134,9 +135,9 @@ Known stability and functionality issues
 *   Neither Firefox nor Chrome seem to render foreignObjects in in-line SVG. 
     **MORE DETAILS?**
 
-*   Chrome doesn't render objects (though it does render images) within 
-    foreignObjects in sandboxed iframes.  This used to work in really old 
-    builds like 27.  **MORE DETAILS?**
+*   Chrome doesn't render objects or embeds (though it does render images and 
+    iframes) within foreignObjects in sandboxed iframes.  This used to work in 
+    old builds such as 27.0.1453.93. (bug-repros/*.chrome-iframe-foreignobject.test)
 
 
 Future work

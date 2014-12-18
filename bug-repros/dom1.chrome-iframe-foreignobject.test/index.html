@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Chrome bugs with SVG foreignObjects in sandboxed iframes</title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+  </head>
+  <body>
+    <h1>Chrome CSP bugs with SVG foreignObjects in sandboxed iframes</h1>
+    <p>
+      The following test cases are attempts to load an SVG with a <code>foreignObject</code> that contains HTML that loads another SVG.
+    </p>
+    <table class="testcase">
+      <thead>
+        <tr>
+          <td></td>
+          <td><code>iframe</code></td>
+          <td>Sandboxed <code>iframe</code></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><code>img</code></th>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-img.svg" width="68" height="68"></iframe></td>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-img.svg" width="68" height="68" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th><code>object</code></th>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-object.svg" width="68" height="68"></iframe></td>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-object.svg" width="68" height="68" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th><code>embed</code></th>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-embed.svg" width="68" height="68"></iframe></td>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-embed.svg" width="68" height="68" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th><code>iframe</code></th>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-iframe.svg" width="68" height="68"></iframe></td>
+          <td><iframe src="http://dom1.chrome-iframe-foreignobject.test/circle-emb-html-iframe.svg" width="68" height="68" sandbox=""></iframe></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In all cases, the nested SVG should load, resulting in a circle with a wart on the lower-right corner.  However, current versions of Chrome do not load the nested image when it is loaded through a <code>object</code> or <code>embed</code> tag inside a sandboxed iframe. 
+    </p>
+    <p>
+      In Firefox, the nested SVG loads in all four cases.  Internet Explorer doesn't render the contents of <code>svg:foreignObject</code>, so it never renders the nested images.  Old versions of Chrome (such as 27.0.1453.93) loaded the nested image in all cases.
+    </p>
+  </body>
+</html>

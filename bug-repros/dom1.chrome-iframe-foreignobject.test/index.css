@@ -1,0 +1,46 @@
+body {
+    font-size: 12pt;
+}
+
+code {
+    font-size: 12pt;
+    font-family: monospace;
+}
+
+table.testcase {
+    table-layout: fixed;
+    width: 216px;
+}
+table.testcase>thead td {
+    width: 66x;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 2px;
+}
+table.testcase>tbody tr {
+    line-height: 0;
+}
+table.testcase>tbody th {
+    line-height: normal;
+}
+table.testcase>tbody td {
+    width: 68px;
+    height: 68px;
+    border: 1px solid black;
+    padding: 0px;
+}
+table.testcase>tbody img {
+    display: block;
+}
+table.testcase>tbody iframe {
+    border-width: 0px;
+}
+table.testcase>tfoot td {
+    width: 66px;
+    text-align: left;
+    vertical-align: top;
+    overflow: hidden;
+    padding: 2px;
+}
+
