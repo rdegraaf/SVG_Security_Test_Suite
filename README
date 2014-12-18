@@ -41,15 +41,6 @@ results are based on my analyses rather than directly on the standards.  If you
 have a good argument why my analysis is incorrect, preferrably one backed up by 
 relevant standards, please point it out.
 
-*   It is unclear whether in-line SVG should be treated as images or nested 
-    documents which should be blockable by CSP, or as something else to which 
-    CSP does not apply.  Brad Hill tells me that the consensus among browser 
-    vendors is that in-line CSS is just tags and does not create a nested 
-    browsing context, so it does not make sense to apply CSP.  I'm not sure 
-    that I agree; conceptually, there's not a lot of difference between an 
-    in-line SVG and an SVG encoded as a `data:` URI to an `object` tag.  But 
-    I'll go with the de-facto standard for now.
-
 *   If one document with a CSP loads a child document with a more permissive 
     CSP, and only the child document's CSP applies to the child document, then 
     the child document may be able to interact with the parent in ways that 
@@ -101,11 +92,6 @@ Known security model violations
 *   Prior to version 28.0, Firefox did not apply CSP to sandboxed iframes. 
     This appears to have been due to wider problems with sandboxed iframes.
 
-*   All browsers display in-line SVG even under CSP `default-src 'none';`.  As 
-    described above, there don't seem to be any clear rules for how to apply 
-    CSP to in-line SVG.  [Firefox bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1018310).  
-    [Chrome bug](https://code.google.com/p/chromium/issues/detail?id=378500).
-
 
 Known stability and functionality issues
 ----------------------------------------
@@ -131,11 +117,14 @@ Known stability and functionality issues
     frames needed to be handled differently than objects and embeds.  [Bug 
     tracker](https://code.google.com/p/chromium/issues/detail?id=400840).
 
-*   Chrome doesn't apply `style-src` correctly to sandboxed iframes.  If an SVG 
-    in a sandboxed iframe tries to load an external stylesheet from the same 
-    origin, it will be blocked by CSP unless the origin is explicitly listed in 
-    `style-src`; Chrome blocks it even under `style-src 'self';`.  **SAME WITH 
-    IMG-SRC?**  **BUG REFERENCE?**
+*   Chrome doesn't apply `style-src` correctly to sandboxed iframes.  If a 
+    document in a sandboxed iframe tries to load an external stylesheet from 
+    the same source, it will be blocked by CSP unless the source is explicitly 
+    listed in `style-src`; Chrome blocks it even under `style-src 'self';`.  
+    Similarly, attempts by a sandboxed iframe to load an image from the same 
+    source with a CSP that permits `img-src 'self'` will be blocked.  I haven't 
+    tested other CSP directives, but expect that the same issue will occur.
+    [Bug tracker](https://code.google.com/p/chromium/issues/detail?id=443444).
 
 *   Internet Explorer 11.0.9879.0 fails to load SVGs that contain 
     `foreignObject` blocks as static images.  It does load them as nested 

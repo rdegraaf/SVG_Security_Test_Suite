@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Chrome CSP bugs in sandboxed iframes</title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+  </head>
+  <body>
+    <h1>Chrome CSP bugs in sandboxed iframes</h1>
+    <p>
+      The following test cases are attempts to embed an HTML document that loads a stylesheet, both served with the CSP <code>"default-src 'none'; style-src 'self' http://dom2a.chrome-sandbox-iframe.test;"</code>.
+    </p>
+    <table class="testcase">
+      <thead>
+        <tr>
+          <td></td>
+          <td><code>iframe</code></td>
+          <td>Sandboxed <code>iframe</code></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Same-source stylesheet</th>
+          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th>Different-source stylesheet</th>
+          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In all cases, the stylesheet should load and set the background colour to red.  However, in same-source, sandboxed case, Chrome does not load the stylesheet.  Firefox and the most recent Internet Explorer builds do load the stylesheet in all cases.
+    </p>
+    <p>
+      Chrome <em>does</em> load the stylesheet in the same-source, sandboxed case if the domain is explicitly listed in the CSP (as opposed to relying on <code>self</code>).  The following test cases are the same except that the CSP is changed to <code>"default-src 'none'; style-src http://*.chrome-sandbox-iframe.test;"</code>.
+    </p>
+    <table class="testcase">
+      <thead>
+        <tr>
+          <td></td>
+          <td><code>iframe</code></td>
+          <td>Sandboxed <code>iframe</code></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Same-source stylesheet</th>
+          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th>Different-source stylesheet</th>
+          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>It's not just <code>style-src</code> that has this problem; here's the same with <code>img-src</code> instead:</p>
+    <table class="testcase">
+      <thead>
+        <tr>
+          <td></td>
+          <td><code>iframe</code></td>
+          <td>Sandboxed <code>iframe</code></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Same-source image</th>
+          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-so.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+        <tr>
+          <th>Different-source image</th>
+          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-do.html" width="80" height="80" sandbox=""></iframe></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      I haven't verified that this bug applies to all other CSP directives as well, but I expect that it does.
+    </p>
+    <p>
+      Brad Hill speculated that the reason for this bug is that Chrome is comparing the sandboxed iframe's <a href="http://www.w3.org/TR/html-markup/iframe.html#iframe.attrs.sandbox">unique origin</a> against <code>self</code> and not finding a match.  However, <code>self</code> is supposed to be evaluated against the scheme, host, and port of the resource, not against the origin.  From the <a href="https://w3c.github.io/webappsec/specs/content-security-policy/#match-source-expression">current draft CSP specification</a>:
+    </p>
+    <blockquote>
+      <ol start="5">
+        <li>If the source expression is a case insensitive match for 'self' (including the quotation marks), then:</li>
+        <ol>
+          <li>Return does match if the URL has the same scheme, host, and port as the protected resource’s URL (using the default port for the appropriate scheme if either or both URLs are missing ports).</li>
+        </ol>
+      </ol>
+    </blockquote>
+    <p>
+      This implies that the behaviour of Firefox and Internet Explorer is correct, and that Chrome is violating the standards.
+    </p>
+  </body>
+</html>
