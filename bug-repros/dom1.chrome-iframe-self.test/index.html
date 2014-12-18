@@ -8,7 +8,7 @@
   <body>
     <h1>Chrome CSP bugs in sandboxed iframes</h1>
     <p>
-      The following test cases are attempts to embed an HTML document that loads a stylesheet, both served with the CSP <code>"default-src 'none'; style-src 'self' http://dom2a.chrome-sandbox-iframe.test;"</code>.
+      The following test cases are attempts to embed an HTML document that loads a stylesheet, both served with the CSP <code>"default-src 'none'; style-src 'self' http://dom2a.chrome-iframe-self.test;"</code>.
     </p>
     <table class="testcase">
       <thead>
@@ -21,13 +21,13 @@
       <tbody>
         <tr>
           <th>Same-source stylesheet</th>
-          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-so.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom2.chrome-iframe-self.test/css-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom2.chrome-iframe-self.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
         <tr>
           <th>Different-source stylesheet</th>
-          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-do.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom2.chrome-sandbox-iframe.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom2.chrome-iframe-self.test/css-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom2.chrome-iframe-self.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
       </tbody>
     </table>
@@ -35,7 +35,7 @@
       In all cases, the stylesheet should load and set the background colour to red.  However, in same-source, sandboxed case, Chrome does not load the stylesheet.  Firefox and the most recent Internet Explorer builds do load the stylesheet in all cases.
     </p>
     <p>
-      Chrome <em>does</em> load the stylesheet in the same-source, sandboxed case if the domain is explicitly listed in the CSP (as opposed to relying on <code>self</code>).  The following test cases are the same except that the CSP is changed to <code>"default-src 'none'; style-src http://*.chrome-sandbox-iframe.test;"</code>.
+      Chrome <em>does</em> load the stylesheet in the same-source, sandboxed case if the domain is explicitly listed in the CSP (as opposed to relying on <code>self</code>).  The following test cases are the same except that the CSP is changed to <code>"default-src 'none'; style-src http://*.chrome-iframe-self.test;"</code>.
     </p>
     <table class="testcase">
       <thead>
@@ -48,13 +48,13 @@
       <tbody>
         <tr>
           <th>Same-source stylesheet</th>
-          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-so.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom3.chrome-iframe-self.test/css-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom3.chrome-iframe-self.test/css-so.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
         <tr>
           <th>Different-source stylesheet</th>
-          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-do.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom3.chrome-sandbox-iframe.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom3.chrome-iframe-self.test/css-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom3.chrome-iframe-self.test/css-do.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
       </tbody>
     </table>
@@ -70,13 +70,13 @@
       <tbody>
         <tr>
           <th>Same-source image</th>
-          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-so.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-so.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom4.chrome-iframe-self.test/img-so.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom4.chrome-iframe-self.test/img-so.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
         <tr>
           <th>Different-source image</th>
-          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-do.html" width="80" height="80"></iframe></td>
-          <td><iframe src="http://dom4.chrome-sandbox-iframe.test/img-do.html" width="80" height="80" sandbox=""></iframe></td>
+          <td><iframe src="http://dom4.chrome-iframe-self.test/img-do.html" width="80" height="80"></iframe></td>
+          <td><iframe src="http://dom4.chrome-iframe-self.test/img-do.html" width="80" height="80" sandbox=""></iframe></td>
         </tr>
       </tbody>
     </table>
