@@ -159,7 +159,7 @@
     \item An \emph{origin} is a (protocol, host, port) tuple.
     \item Unless you're Internet Explorer, which ignores the port.
     \item Scripts running inside a page from one origin can only interact with resources from the same origin.
-    \item \url{http://www.example.come/somedir/page.html} has the same origin as \url{http://www.example.com/otherdir/doc.html}, but not the same origin as \url{https://www.example.com/somedir/page2.html} or \url{http://en.example.com}.
+    \item \url{http://www.example.com/somedir/page.html} has the same origin as \url{http://www.example.com/otherdir/doc.html}, but not the same origin as \url{https://www.example.com/somedir/page2.html} or \url{http://en.example.com}.
     \item The origin of a script is the origin of the page that loaded it, not the origin from which the script was loaded.
     \item This restriction can be relaxed in various ways.
     \item Cookies, Flash, \texttt{file:} URIs, and some other things have different rules.
@@ -171,12 +171,12 @@
 \begin{frame}[fragile]{Content Security Policy}{An introduction}
   \begin{itemize}
     %\item Exploit mitigation system. 
-    \item First standardized in 2012.
-    \item Firefox and Chrome have supported it for a while.  The latest Internet Explorer technical preview build also supports it.
     \item Policies restrict the allowed sources for scripts, styles, images, etc.  Resources may only come from white-listed origins.
     \item Blocks mixed content: \texttt{eval}, in-line scripts and styles, \texttt{data:} URIs, etc.
     \item Can be used to restrict content to \texttt{https:} URIs.
     \item Sent by the server in \texttt{Content-Security-Policy} headers; enforced by the browser.
+    \item First standardized in 2012.
+    \item Firefox and Chrome have supported it for a while.  The latest Internet Explorer technical preview build also supports it.
   \end{itemize}
 \end{frame}
 
@@ -199,11 +199,11 @@
 
 \begin{frame}[fragile]{Content Security Policy}{Source lists}
   \begin{itemize}
-    \item Each directive must have a source list.  Sources can be
+    \item Each directive must have a source list.  Sources\footnote{A \emph{source} is a scheme-host-port tuple, but differs from the document \emph{origin} under some circumstances.} can be
   \end{itemize}
   \begin{description}
     \item['none'] Content covered by the directive must not be allowed from any source.
-    \item['self'] The origin of the document to which CSP applies.
+    \item['self'] The source of the document to which CSP applies.
     \item[<host>] A host name.  Some wildcards are allowed.  A URI scheme and port number may also be supplied.
     \item[<scheme>] A URI scheme.
   \end{description}
@@ -218,17 +218,26 @@
   \setbeamercovered{opaque}
   \begin{itemize}[<+->]
     \item Defaults to not allowing any content from any source.
-    \item Styles are only allowed from external files at the same source.
-    \item Scripts are only allowed from external files at the same source, and from other source over HTTPS.
+    \item Styles are only allowed from external files at the same source as the document.
+    \item Scripts are only allowed from external files at the same source, and from other sources over HTTPS.
     \item Static images are allowed from from files at the same source, \texttt{data:} URIs, and from files at \texttt{*.svg.test}.
-    \item Objects and frames are allowed from the same source and from \texttt{http://nocsp.svg.test}.
+    \item Objects and frames are allowed from the same source and from \texttt{http://images.svg.test}.
     \item Media, fonts, and connections are not allowed on any source.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Content Security Policy}{More things to know}
+  \begin{itemize}
+    \item If more than one CSP applies to a document, then all policies must be applied independently.
+    \item \emph{Only} the CSP served with an embedded document applies to that document; any CSPs that apply to the parent context are ignored.
+    \item There is a report-only mode for debugging.
+    \item There are ways to allow in-line scripts and stylesheets, and to allow \texttt{eval} in scripts.  Don't use them.
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Content Security Policy}{Why you should use it}
   \begin{itemize}
-    \item Think ASLR+DEP for web apps.
+    \item Exploit mitigation.  Think ASLR+DEP for web apps.
     \item It's hard to get XSS if the browser will only execute scripts from white-listed static documents and \texttt{eval} is banned globally.
     \item A lot of web frameworks like to mix content, scripts, and styles, so get started on separating them as soon as possible.
     \item More information: \url{http://content-security-policy.com/}, \url{https://www.isecpartners.com/media/106598/csp_best_practices.pdf}
@@ -258,12 +267,12 @@
   \hfill\includegraphics[height=5cm]{includes/dammitjim}\hspace*{\fill}
 \end{frame}
 
-\begin{frame}[fragile]{A simple example}{Source code}
-  \lstinputlisting[language=XML]{includes/circle.svg}
-\end{frame}
-
 \begin{frame}[fragile]{A simple example}{As rendered}
   \hfill\includegraphics[height=2cm]{includes/circle}\hspace*{\fill}
+\end{frame}
+
+\begin{frame}[fragile]{A simple example}{Source code}
+  \lstinputlisting[language=XML]{includes/circle.svg}
 \end{frame}
 
 \subsection{Using SVG with HTML}
@@ -412,6 +421,15 @@
 \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]{In-line SVG}
+  \lstinputlisting[style=small3HTML,breaklines=true,linebackgroundcolor={\btLstHL<1>{5-16}}]{includes/svg-inline.html}
+  \begin{itemize}
+    \item Considered part of the document.
+    \item Can load its own scripts.
+    \item \texttt{xml-stylesheet} directives aren't allowed in HTML, but any stylesheets applied to the HTML document also apply to in-line SVG.
+  \end{itemize}
+\end{frame}
+
 \section{Attacking SVG}
 \subsection{Attack surface}
 
@@ -504,6 +522,7 @@
       \item Sandboxed iframes disable script execution
       \item Browsers must never load a document as a child of itself.
     \end{itemize}
+    \item In-line SVG is just tags, but security rules apply to any external resources used by in-line SVG.
   \end{itemize}
 \end{frame}
   
@@ -569,7 +588,7 @@ CSP \emph{does} block external CSS correctly in the 11.0.9879.0 technical previe
   \caption{Chrome}
 \end{subfigure}
 \end{figure}
-{\tiny Chrome bug 384527\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=384527}}; fixed in Chromium build 37.0.2054.0}
+{\tiny Chrome bug 384527\footnote{\url{https://code.google.com/p/chromium/issues/detail?id=384527}}; fixed in Chromium build 37.0.2054.0, picked up by Apple as CVE-2014-4465\footnote{\url{http://support.apple.com/en-us/HT6596}}}
 \end{frame}
 
 \begin{frame}[fragile]{Internet Explorer always loads external images}{Source}
@@ -600,7 +619,7 @@ CSP \emph{does} block external CSS correctly in the 11.0.9879.0 technical previe
   \caption{Internet Explorer}
 \end{subfigure}
 \end{figure}
-{\tiny Reported to Microsoft; ``Not a security bug''.}
+{\tiny Reported to Microsoft; ``Not a security bug''.}\\
 CSP \emph{does} block external images correctly in the 11.0.9879.0 technical preview build.
 \end{frame}
 

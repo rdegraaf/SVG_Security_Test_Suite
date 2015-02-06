@@ -35,21 +35,10 @@ There may be errors in the expected results.  If you find one, please point it
 out and explain why it is incorrect.  Ideally, back up your arguments with 
 relevant standards.
 
-These test cases cover some areas which seem to be poorly specified, or at 
-least not consistently implemented by browsers.  In these cases, my expected 
-results are based on my analyses rather than directly on the standards.  If you 
-have a good argument why my analysis is incorrect, preferrably one backed up by 
-relevant standards, please point it out.
-
-*   If one document with a CSP loads a child document with a more permissive 
-    CSP, and only the child document's CSP applies to the child document, then 
-    the child document may be able to interact with the parent in ways that 
-    violates its CSP (for instance, by loading a script that manipulates the 
-    parent document from a source that is not allowed by the parent document). 
-    Consequently, my position is that CSPs on nested documents must be 
-    composed: parent document CSPs must apply to all child documents in 
-    addition to their own CSPs.  An argument might be made that this is 
-    unnecessary if the parent and child are loaded from different origins.
+Note that in-line SVG is not considered to be an image from the perspective of 
+CSP (rather than being considered logically similar to an object tag with a 
+data: URI).  Consequently, it is unaffected by CSP. See this thread on 
+WebAppSec: http://lists.w3.org/Archives/Public/public-webappsec/2014Jul/0113.html
 
 
 Last Tested
@@ -70,8 +59,9 @@ Known security model violations
 
 *   Old Chrome builds always loaded and applied external CSS on static images 
     (unless banned by CSP), but only if the CSS came from a different origin 
-    than the image.  This was fixed in build 37.0.2054.0.  [Bug tracker](
-    https://code.google.com/p/chromium/issues/detail?id=384527).  
+    than the image.  This was fixed in build 37.0.2054.0 and was picked up by 
+    Apple in [CVE-2014-4465](http://support.apple.com/en-us/HT6596).  [Bug 
+    tracker](https://code.google.com/p/chromium/issues/detail?id=384527).  
     (bug-repros/*.chromebug2.test)
     
 *   Internet Explorer always loads external images, even from a static image 
@@ -115,17 +105,19 @@ Known stability and functionality issues
     contexts created from `object` and `embed` tags, rather than only 
     `object-src`.  `frame-src` is only supposed to apply to `frame` and 
     `iframe` tags, though I'm not sure why the designers of CSP felt that 
-    frames needed to be handled differently than objects and embeds.  [Bug 
-    tracker](https://code.google.com/p/chromium/issues/detail?id=400840).
+    frames needed to be handled differently than objects and embeds.  [This 
+    WebAppSec thread](http://lists.w3.org/Archives/Public/public-webappsec/2014Aug/0049.html)
+    discusses the issue.  [Bug tracker](https://code.google.com/p/chromium/issues/detail?id=400840).
 
-*   Chrome doesn't apply `style-src` correctly to sandboxed iframes.  If a 
+*   Chrome doesn't handle CSP 'self' correctly to sandboxed iframes.  If a 
     document in a sandboxed iframe tries to load an external stylesheet from 
     the same source, it will be blocked by CSP unless the source is explicitly 
     listed in `style-src`; Chrome blocks it even under `style-src 'self';`.  
     Similarly, attempts by a sandboxed iframe to load an image from the same 
     source with a CSP that permits `img-src 'self'` will be blocked.  I haven't 
     tested other CSP directives, but expect that the same issue will occur.
-    [Bug tracker](https://code.google.com/p/chromium/issues/detail?id=443444).
+    [This WebAppSec thread](http://lists.w3.org/Archives/Public/public-webappsec/2014Dec/0275.html)
+    discusses this issue.  [Bug tracker](https://code.google.com/p/chromium/issues/detail?id=443444).
     (bug-repros/*.chrome-iframe-self.test)
 
 *   Internet Explorer 11.0.9879.0 fails to load SVGs that contain 
