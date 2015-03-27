@@ -37,8 +37,11 @@ relevant standards.
 
 Note that in-line SVG is not considered to be an image from the perspective of 
 CSP (rather than being considered logically similar to an object tag with a 
-data: URI).  Consequently, it is unaffected by CSP. See this thread on 
+data: URI).  Consequently, it is unaffected by CSP.  See this thread on 
 WebAppSec: http://lists.w3.org/Archives/Public/public-webappsec/2014Jul/0113.html
+
+This project may be modified or redistributed under the terms of the GNU GPL, 
+version 2.  See LICENCE for details.
 
 
 Last Tested
@@ -138,6 +141,8 @@ Future work
 *   Mobile browsers
 *   HTML and embedded SVG with different CSPs, especially if they're 
     same-origin.
+*   Multiple contradictory CSPs on a single document, including header and meta 
+    tag versions.
 *   SVG with in-line `data:` URIs.
 *   SVG's `use` element and anything else that takes a URI argument
 *   SVG 2.0: <code>iframe</code> and <code>canvas</code> and other stuff
